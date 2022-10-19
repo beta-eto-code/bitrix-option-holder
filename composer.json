@@ -1,0 +1,29 @@
+{
+    "name": "beta/bitrix-option-holder",
+    "description": "Simple kv manager for bitrix",
+    "type": "lib",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Nesterov",
+            "email": "alex19pov31@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bx\\OptionHolder\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "psr/simple-cache": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6",
+        "vimeo/psalm": "^4.20"
+    },
+    "scripts": {
+        "cs": "phpcs --standard=PSR12 ./src/",
+        "analyze": "psalm --show-info=true"
+    }
+}

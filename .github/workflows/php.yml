@@ -42,3 +42,6 @@ jobs:
 
       - name: Run static analyzer
         run: composer run-script analyze
+
+      - name: Run tests
+        run: composer run-script test

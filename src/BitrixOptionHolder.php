@@ -40,4 +40,9 @@ class BitrixOptionHolder implements OptionHolderInterface
 
         return $result;
     }
+
+    public function getDefaultKeySpace(): string
+    {
+        return $this->defaultKeySpace;
+    }
 }

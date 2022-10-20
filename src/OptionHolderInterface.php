@@ -6,6 +6,8 @@ use Bitrix\Main\Result;
 
 interface OptionHolderInterface
 {
+    public function getDefaultKeySpace(): string;
+
     /**
      * @param string $key
      * @param string|null $keySpace

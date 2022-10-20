@@ -14,16 +14,24 @@
             "Bx\\OptionHolder\\": "src/"
         }
     },
+    "autoload-dev": {
+        "classmap": ["tests/Stubs"],
+        "psr-4": {
+            "Bx\\OptionHolder\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=7.4",
         "psr/simple-cache": "^1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^4.20"
+        "vimeo/psalm": "^4.20",
+        "phpunit/phpunit": "^9.5"
     },
     "scripts": {
         "cs": "phpcs --standard=PSR12 ./src/",
-        "analyze": "psalm --show-info=true"
+        "analyze": "psalm --show-info=true",
+        "test": "phpunit"
     }
 }

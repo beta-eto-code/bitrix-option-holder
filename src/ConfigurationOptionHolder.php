@@ -44,4 +44,9 @@ class ConfigurationOptionHolder implements OptionHolderInterface
 
         return $result;
     }
+
+    public function getDefaultKeySpace(): string
+    {
+        return $this->mainSettingsKeySpace;
+    }
 }

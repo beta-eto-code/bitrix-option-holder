@@ -33,4 +33,9 @@ class ArrayOptionHolder implements OptionHolderInterface
         $this->options[$keySpace][$key] = $value;
         return new Result();
     }
+
+    public function getDefaultKeySpace(): string
+    {
+        return $this->defaultKeySpace;
+    }
 }

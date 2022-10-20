@@ -94,4 +94,9 @@ class ComplexOptionHolder implements OptionHolderInterface
 
         return $optionHolder;
     }
+
+    public function getDefaultKeySpace(): string
+    {
+        return $this->defaultKeySpace;
+    }
 }

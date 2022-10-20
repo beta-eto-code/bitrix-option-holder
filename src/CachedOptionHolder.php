@@ -29,7 +29,7 @@ class CachedOptionHolder implements OptionHolderInterface
      */
     public function getOptionValue(string $key, ?string $keySpace = null, $defaultValue = null)
     {
-        $keySpace = $keySpace ?? '';
+        $keySpace = $keySpace ?? $this->getDefaultKeySpace();
         $cacheKey = "$keySpace.$key";
         $result = $this->cache->get($cacheKey);
         if ($result !== null) {
@@ -38,7 +38,7 @@ class CachedOptionHolder implements OptionHolderInterface
 
         $result = $this->optionHolder->getOptionValue($key, $keySpace, $defaultValue);
         if ($result !== null) {
-            $this->cache->set($key, $this->ttl);
+            $this->cache->set($cacheKey, $result, $this->ttl);
         }
 
         return $result;
@@ -54,6 +54,7 @@ class CachedOptionHolder implements OptionHolderInterface
      */
     public function setOptionValue(string $key, $value, ?string $keySpace = null): Result
     {
+        $keySpace = $keySpace ?? $this->getDefaultKeySpace();
         $resulSetValue = $this->optionHolder->setOptionValue($key, $value, $keySpace);
         if (!$resulSetValue->isSuccess()) {
             return $resulSetValue;
@@ -62,5 +63,10 @@ class CachedOptionHolder implements OptionHolderInterface
         $cacheKey = "$keySpace.$key";
         $this->cache->set($cacheKey, $value, $this->ttl);
         return $resulSetValue;
+    }
+
+    public function getDefaultKeySpace(): string
+    {
+        return $this->optionHolder->getDefaultKeySpace();
     }
 }
